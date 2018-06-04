@@ -54,6 +54,7 @@ function remove(usersId){
       id: usersid
     })
     .del()
+    .returning('*')
   )
 }
 

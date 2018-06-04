@@ -13,10 +13,17 @@ router.delete('/:usersId', controller.remove)
 
 const commentController = require('../controllers/comments')
 
-router.get('/:usersId/comments', commentController.getAll)
+router.get('/:usersId/city/:cityId/comments', commentController.getAll)
 router.get('/:usersId/comments/:commentsId', commentController.getOne)
-router.post('/:usersId/comments/:cityId', commentController.create)
+router.post('/:usersId/city/:cityId/comments', commentController.create)
 router.put('/:usersId/comments/:commentsId', commentController.update)
 router.delete('/:usersId/comments/:commentsId', commentController.remove)
+
+
+const voteController = require('../controllers/votes')
+
+router.get('/:usersId/comments/:commentsId/votes', voteController.getAll)
+router.post('/:usersId/comments/:commentsId/votes', voteController.create)
+router.delete('/:usersId/comments/:commentsId/votes', voteController.remove)
 
 module.exports = router
