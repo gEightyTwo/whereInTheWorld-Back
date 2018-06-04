@@ -1,10 +1,10 @@
 const knex = require('../../db/knex');
 const bcrypt = require('bcrypt-as-promised')
 
-function getAll(){
+function getAll(cityId){
   return (
     knex('comments')
-    // .leftJoin('users', 'user_id', 'users.id')
+    .where({city_id: cityId})
     .returning('*')
   )
 }
@@ -12,8 +12,8 @@ function getAll(){
 function getOne(id){
   return (
     knex('comments')
-    .innerJoin('users', 'user_id', 'users.id')
     .where({id})
+    .returning('*')
   )
 }
 
@@ -58,11 +58,17 @@ function update(commentsId, title, content){
 
 function remove(commentsId){
   return (
-    knex('comments')
-    .where({id: commentsId})
+    knex('votes')
+    .where({comment_id: commentsId})
     .del()
-    .returning('*')
-  )
+  ).then(response => {
+    return (
+      knex('comments')
+      .where({id: commentsId})
+      .del()
+      .returning('*')
+    )
+  })
 }
 
 module.exports = {getOne, getAll, create, update, remove}
