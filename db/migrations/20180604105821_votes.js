@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('user_id').notNullable().references('users.id');
     table.integer('comment_id').notNullable().references('comments.id');
-    table.integer('vote')
+    table.enu('vote', [-1, 1])
     table.timestamps(true, true)
   });
 };
