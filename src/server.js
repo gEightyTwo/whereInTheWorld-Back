@@ -8,12 +8,10 @@ const app = express();
 app.use(bodyParser.json());
 
 
-// const authController = require('./routes/auth')
-// app.use(cors())
-// app.use('/api', require('./routes/snacks'));
-// app.use('/auth', authController)
-// app.use('/users', require('./routes/users'))
-// app.use('/reviews', require('./routes/reviews'))
+app.use(cors())
+app.use('/auth', require('./routes/auth'));
+app.use('/users', require('./routes/users'))
+app.use('/comments', require('./routes/comments'))
 
 
 // app.get('/protected',
