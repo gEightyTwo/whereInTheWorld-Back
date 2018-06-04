@@ -2,8 +2,8 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('favorites', (table) => {
     table.increments();
-    table.string('user_id').notNullable().defaultsTo('').references('users.id');
-    table.string('city_id').notNullable().defaultsTo('').references('cities.id');
+    table.integer('user_id').notNullable().references('users.id');
+    table.integer('city_id').notNullable().references('cities.id');
     table.timestamps(true, true)
   });
 };

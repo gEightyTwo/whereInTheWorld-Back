@@ -2,9 +2,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('votes', (table) => {
     table.increments();
-    table.string('user_id').notNullable().defaultsTo('').references('users.id');
-    table.string('comment_id').notNullable().defaultsTo('').references('comments.id');
-    table.enu('vote', (-1, 1))
+    table.integer('user_id').notNullable().references('users.id');
+    table.integer('comment_id').notNullable().references('comments.id');
+    table.integer('vote')
     table.timestamps(true, true)
   });
 };
