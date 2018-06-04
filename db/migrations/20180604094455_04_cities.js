@@ -4,6 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('name').notNullable().defaultsTo('');
     table.string('img').notNullable().defaultsTo('');
+    table.string('country').notNullable().defaultsTo('');
+    table.string('state').notNullable().defaultsTo('');
     table.string('comment_id').notNullable().defaultsTo('').references('comments.id');
   });
 };
