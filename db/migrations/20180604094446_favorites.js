@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('user_id').notNullable().defaultsTo('').references('users.id');
     table.string('city_id').notNullable().defaultsTo('').references('cities.id');
+    table.timestamps(true, true)
   });
 };
 
