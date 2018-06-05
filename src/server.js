@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors())
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'))
-app.use('/comments', require('./routes/comments'))
+// app.use('/comments', require('./routes/comments'))
 
 
 // app.get('/protected',
