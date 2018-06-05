@@ -13,7 +13,7 @@ function login(email, password){
     throw { status: 401, message: "Unauthorized"}
   })
   .then(function(){
-    delete user.password
+    delete user.hashed_password
     return user
   })
 }
