@@ -22,7 +22,9 @@ const commentController = require('../controllers/comments')
 
 router.get('/:usersId/city/:cityId/comments', commentController.getAll)
 router.get('/:usersId/comments/:commentsId', commentController.getOne)
+
 router.post('/:usersId/city/:cityId/comments', commentController.create)
+
 router.put('/:usersId/comments/:commentsId', commentController.update)
 router.delete('/:usersId/comments/:commentsId', commentController.remove)
 
