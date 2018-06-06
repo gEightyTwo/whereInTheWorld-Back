@@ -18,13 +18,13 @@ const jwt = require('jsonwebtoken')
 
 function login(req, res, next){
   // 1. Make sure that request is good
-  if(!req.body.username){
+  if(!req.body.email){
     return next({ status: 400, message: 'Bad request'})
   }
   if(!req.body.password){
     return next({ status: 400, message: 'Bad request'})
   }
-  authModel.login(req.body.username, req.body.password)
+  authModel.login(req.body.email, req.body.password)
   .then(function({id, email, first_name}){
       const token = jwt.sign({id, email, first_name}, process.env.SECRET)
 

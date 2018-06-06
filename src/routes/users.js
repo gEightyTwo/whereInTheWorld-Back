@@ -11,6 +11,13 @@ router.post('/', controller.create)
 router.delete('/:usersId', controller.remove)
 
 
+const favoriteController = require('../controllers/favorites')
+
+router.get('/:usersId/favorites', favoriteController.getAll)
+router.post('/:usersId/favorites', favoriteController.create)
+router.delete('/:usersId/favorites/:favoritesId', favoriteController.remove)
+
+
 const commentController = require('../controllers/comments')
 
 router.get('/:usersId/city/:cityId/comments', commentController.getAll)
