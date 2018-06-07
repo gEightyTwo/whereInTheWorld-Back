@@ -6,6 +6,7 @@ function login(email, password){
   return userModel.getUserByEmail(email)
   .then(function(data){
     if(!data) throw { status: 400, message: "Bad Request"}
+    
     user = data
     return bcrypt.compare(password, data.hashed_password)
   })
