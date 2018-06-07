@@ -15,18 +15,27 @@ function getAllWithMostComments(req, res, next) {
 
 function getOne(req, res, next) {
   console.log("made it to getOne controller");
-  if (!req.params.cityId) {
+  if (!req.params.cityName) {
     return next({ status: 400, message: "Bad Request" });
   }
-  userModel
-    .getOne(req.params.cityId)
+  citiesModel
+    .getOne(req.params.cityName)
     .then(data => {
       res.status(200).send({ data });
     })
     .catch(next);
 }
 
+function create(req, res, next){
+    citiesModel.create(req.body.name)
+    .then(data => {
+        res.status(200).send({ data });
+    })
+    .catch(next);
+}
+
 module.exports = {
     getAllWithMostComments,
-    getOne
+    getOne,
+    create
 }
