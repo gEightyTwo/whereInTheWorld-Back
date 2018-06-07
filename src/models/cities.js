@@ -17,13 +17,20 @@ function getAllWithMostComments() {
         })
 }
 
-function getOne(cityId) {
+function getOne(cityName) {
   return knex("cities")
-    .where({ id: cityId })
+    .where({ name: cityName })
     .first();
+}
+
+function create(cityName){
+   return knex('cities')
+    .insert({name: cityName})
+    .returning("*")
 }
 
 module.exports = {
     getAllWithMostComments,
-    getOne
+    getOne,
+    create
 }
