@@ -11,11 +11,17 @@ function getAll(commentsId){
 
 function create(usersID, commentsId, val){
   console.log(usersID, commentsId, val)
-  return (
-    knex('votes')
-    .insert({user_id: usersID, comment_id: commentsId, vote: val})
-    .returning('*')
-    )
+  return knex('votes')
+        .where({comment_id: commentsId, user_id: usersID})
+        .first()
+        .then(vote => {
+          if(!vote){
+            return knex('votes')
+              .insert({user_id: usersID, comment_id: commentsId, vote: val})
+              .returning('*')
+          }
+          throw(new Error('Only one Vote'))
+        })
 }
 
 function remove(usersId, commentsId){
