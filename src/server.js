@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 
 app.use(cors())
+app.use(morgan("dev"))
 app.use('/auth', require('./routes/auth'));
 app.use('/users', require('./routes/users'))
 app.use('/cities', require('./routes/cities'))
