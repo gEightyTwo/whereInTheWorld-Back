@@ -4,6 +4,7 @@ const commentModel = require('../models/comments')
 function getAll(req, res, next){
   commentModel.getAll(req.params.cityId)
   .then(allReviews => {
+    console.log('hello boi', allReviews)
     res.status(200).send({ allReviews })
   })
 }

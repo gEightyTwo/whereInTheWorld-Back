@@ -5,7 +5,25 @@ function getAll(cityId){
   return (
     knex('comments')
     .where({city_id: cityId})
-    .returning('*')
+    // .innerJoin('votes', 'comments.id', 'votes.comment_id')
+    // .returning('*')
+    .then(comments => {
+      const promises = comments.map( comment => {
+        return knex('votes')
+          .where('comment_id', comment.id)
+          .sum('vote')
+          .then(res => {
+            if(res[0].sum === null){
+              comment.vote = 0
+            } else {
+              comment.vote = res[0].sum
+            }
+            return comment
+          })
+      })
+
+      return Promise.all(promises)
+    })
   )
 }
 

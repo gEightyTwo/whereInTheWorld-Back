@@ -35,7 +35,7 @@ function create(req, res, next){
 }
 
 module.exports = {
-    getAllWithMostComments,
+    // getAllWithMostComments,
     getOne,
     create
 }
