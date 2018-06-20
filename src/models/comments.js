@@ -1,5 +1,5 @@
-const knex = require('../../db/knex');
 const bcrypt = require('bcrypt-as-promised')
+const knex = require('../../db/knex');
 
 function getAll(cityId){
   return (
