@@ -18,8 +18,7 @@ function getOne(req, res, next) {
   if (!req.params.cityName) {
     return next({ status: 400, message: "Bad Request" });
   }
-  citiesModel
-    .getOne(req.params.cityName)
+  citiesModel.getOne(req.params.cityName)
     .then(data => {
       res.status(200).send({ data });
     })
